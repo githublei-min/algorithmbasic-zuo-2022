@@ -9,12 +9,14 @@ class Node:
         self.nexts = [] # 邻接点
         self.edges = [] # 邻接边
 
+# 边结构的描述
 class Edge:
     def __init__(self, weight, n_from, n_to):
         self.weight = weight # 权重
         self.n_from = n_from # 起点
         self.n_to = n_to # 终点
 
+# 图结构的描述
 class Graph:
     def __init__(self):
         self.nodes = {} # 点集， 保存 点上值-点 的映射
@@ -45,14 +47,14 @@ class GraphGenerator:
         if n_to not in graph.nodes.keys():
             graph.nodes[n_to] = Node(n_to)
 
-        fromNode = graph.nodes[n_from]
-        toNode = graph.nodes[n_to]
-        edge = Edge(weight, n_from, n_to)
-        fromNode.nexts.append(toNode)
-        fromNode.out_num += 1
-        toNode.in_num += 1
-        fromNode.edges.append(edge)
-        graph.edges.append(edge)
+        fromNode = graph.nodes[n_from] # 起点
+        toNode = graph.nodes[n_to] # 终点
+        edge = Edge(weight, n_from, n_to) # 记录下该边的信息
+        fromNode.nexts.append(toNode) # 记录节点的邻接点信息
+        fromNode.out_num += 1 # 更新起点的出度
+        toNode.in_num += 1 # 更新终点的入度
+        fromNode.edges.append(edge) # 更新节点邻接边的信息
+        graph.edges.append(edge) # 更新图的边信息
 
         return graph
 
