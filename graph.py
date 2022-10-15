@@ -41,32 +41,32 @@ class GraphGenerator:
             n_from = matrix[i][1]
             n_to = matrix[i][2]
 
-        if n_from not in graph.nodes.keys():
-            graph.nodes[n_from] = Node(n_from)
+            if n_from not in graph.nodes.keys():
+                graph.nodes[n_from] = Node(n_from)
 
-        if n_to not in graph.nodes.keys():
-            graph.nodes[n_to] = Node(n_to)
+            if n_to not in graph.nodes.keys():
+                graph.nodes[n_to] = Node(n_to)
 
-        fromNode = graph.nodes[n_from] # 起点
-        toNode = graph.nodes[n_to] # 终点
-        edge = Edge(weight, n_from, n_to) # 记录下该边的信息
-        fromNode.nexts.append(toNode) # 记录节点的邻接点信息
-        fromNode.out_num += 1 # 更新起点的出度
-        toNode.in_num += 1 # 更新终点的入度
-        fromNode.edges.append(edge) # 更新节点邻接边的信息
-        graph.edges.append(edge) # 更新图的边信息
+            fromNode = graph.nodes[n_from] # 起点
+            toNode = graph.nodes[n_to] # 终点
+            edge = Edge(weight, n_from, n_to) # 记录下该边的信息
+            fromNode.nexts.append(toNode) # 记录节点的邻接点信息
+            fromNode.out_num += 1 # 更新起点的出度
+            toNode.in_num += 1 # 更新终点的入度
+            fromNode.edges.append(edge) # 更新节点邻接边的信息
+            graph.edges.append(edge) # 更新图的边信息
 
         return graph
 
 # test
-m = [[5, 0, 7], [3, 0, 1]]
-
-g = GraphGenerator()
-graph = g.createGraph(m)
-
-print(str(graph.nodes.keys()))
-for i in range(len(graph.edges)):
-    print(str([graph.edges[i].weight, graph.edges[i].n_from, graph.edges[i].n_to]))
+# m = [[5, 0, 7], [3, 0, 1]]
+#
+# g = GraphGenerator()
+# graph = g.createGraph(m)
+#
+# print(str(graph.nodes.keys()))
+# for i in range(len(graph.edges)):
+#     print(str([graph.edges[i].weight, graph.edges[i].n_from, graph.edges[i].n_to]))
 
 # 输出结果
 # dict_keys([0, 1])
