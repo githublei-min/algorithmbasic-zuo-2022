@@ -8,7 +8,7 @@ class BFS:
         set = [start]
         while len(que) >0:
             cur = que.pop(0)
-            print(cur.value)
+            print(cur.name)
             for next in cur.nexts:
                 if next not in set:
                     set.append(next)
