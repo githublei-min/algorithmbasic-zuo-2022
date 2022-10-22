@@ -2,7 +2,7 @@ from graph import *
 
 # 拓扑排序
 class TopologicalOrder:
-    def topoSort_bfs(self, graph):
+    def topoSort(self, graph):
         # 先建立以节点为键值，节点入度为值的映射表
         indegree_map = {}
         zero_degree_nodes = [] # 同时用队列记录下入度为0的节点
@@ -36,5 +36,7 @@ generator = GraphGenerator()
 graph = generator.createGraph(matrix)
 
 topo_sort = TopologicalOrder()
-sort_result = topo_sort.topoSort_bfs(graph)
+sort_result = topo_sort.topoSort(graph)
 print(str(sort_result))
+# 输出
+# [0, 1, 2, 3, 4, 5]
