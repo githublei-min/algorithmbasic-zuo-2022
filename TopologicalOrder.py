@@ -1,6 +1,7 @@
 from graph import *
 
 # 拓扑排序
+# 适用于有向图、无环
 class TopologicalOrder:
     def topoSort(self, graph):
         # 先建立以节点为键值，节点入度为值的映射表
@@ -15,7 +16,7 @@ class TopologicalOrder:
         results = [] # 保存输出的节点的值
         while len(zero_degree_nodes) > 0:
             cur = zero_degree_nodes.pop(0)
-            results.append(cur.name)
+            results.append(cur.value)
             for next in cur.nexts:
                 indegree_map[next] -= 1
                 if indegree_map[next] == 0:

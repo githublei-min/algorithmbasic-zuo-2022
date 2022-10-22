@@ -7,7 +7,7 @@ class DFS:
             return
         stack = [start]
         set = [start]
-        print(start.name)
+        print(start.value)
         while len(stack) > 0:
             cur = stack.pop()
             for next in cur.nexts:
@@ -15,7 +15,7 @@ class DFS:
                     stack.append(cur)
                     stack.append(next)
                     set.append(next)
-                    print(next.name)
+                    print(next.value)
                     break
 
 # test

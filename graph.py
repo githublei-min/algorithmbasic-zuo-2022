@@ -2,8 +2,8 @@
 
 # 点结构的描述
 class Node:
-    def __init__(self, name):
-        self.name = name
+    def __init__(self, value):
+        self.value = value
         self.in_num = 0 # 入度
         self.out_num = 0 # 出度
         self.nexts = [] # 邻接点
@@ -13,13 +13,13 @@ class Node:
 class Edge:
     def __init__(self, weight, n_from, n_to):
         self.weight = weight # 权重值
-        self.n_from = n_from # 起点name
-        self.n_to = n_to # 终点name
+        self.n_from = n_from # 起点value
+        self.n_to = n_to # 终点value
 
 # 图结构的描述
 class Graph:
     def __init__(self):
-        self.nodes = {} # 点集， 保存 name-Node 的映射
+        self.nodes = {} # 点集， 保存 value-Node 的映射
         self.edges = [] # 边集， 保存所有边Edge信息
 
 class GraphGenerator:
