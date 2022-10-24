@@ -47,28 +47,26 @@ class GraphGenerator:
             if n_to not in graph.nodes.keys():
                 graph.nodes[n_to] = Node(n_to)
 
-            fromNode = graph.nodes[n_from] # 起点
-            toNode = graph.nodes[n_to] # 终点
-            edge = Edge(weight, fromNode, toNode) # 记录下该边的信息
-            fromNode.nexts.append(toNode) # 记录节点的邻接点信息
-            fromNode.out_num += 1 # 更新起点的出度
-            toNode.in_num += 1 # 更新终点的入度
-            fromNode.edges.append(edge) # 更新节点邻接边的信息
+            Node1 = graph.nodes[n_from] # 起点
+            Node2 = graph.nodes[n_to] # 终点
+            edge = Edge(weight, Node1, Node2) # 记录下该边的信息
+            Node1.nexts.append(Node2) # 记录节点的邻接点信息
+            Node1.out_num += 1 # 更新起点的出度
+            Node2.in_num += 1 # 更新终点的入度
+            Node1.edges.append(edge) # 更新节点邻接边的信息
             graph.edges.append(edge) # 更新图的边信息
 
         return graph
 
 # test
+# 初始化matrx矩阵
 # m = [[5, 0, 7], [3, 0, 1]]
-#
 # g = GraphGenerator()
 # graph = g.createGraph(m)
-#
-# print(str(graph.nodes.keys()))
+# print("[weight, node_from, node_to]")
 # for i in range(len(graph.edges)):
 #     print(str([graph.edges[i].weight, graph.edges[i].n_from.value, graph.edges[i].n_to.value]))
-
-# 输出结果
-# dict_keys([0, 7, 1])
+# 输出
+# [weight, node_from, node_to]
 # [5, 0, 7]
 # [3, 0, 1]

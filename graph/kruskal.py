@@ -101,19 +101,31 @@ class UnionFind: # 并查集
                 self.size_map.pop(b_first)
 
 # test
+# 自定义一个无向连通图
 m = [[7, 'A', 'B'], [5, 'A', 'D'], [9, 'B', 'D'],
      [8, 'B', 'C'], [7, 'B', 'E'], [5, 'C', 'E'],
      [15, 'D', 'E'], [6, 'D', 'F'], [8, 'E', 'F'],
-     [9, 'E', 'G'], [11, 'F', 'G']]
+     [9, 'E', 'G'], [11, 'F', 'G'],
+     [7, 'B', 'A'], [5, 'D', 'A'], [9, 'D', 'B'],
+     [8, 'C', 'B'], [7, 'E', 'B'], [5, 'E', 'C'],
+     [15, 'E', 'D'], [6, 'F', 'D'], [8, 'F', 'E'],
+     [9, 'G', 'E'], [11, 'G', 'F']]
 generator = GraphGenerator()
 graph = generator.createGraph(m)
 
-kruskal = Kruskal()
-result = kruskal.kruskal(graph)
+k = Kruskal()
+res_edge_list = k.kruskal(graph)
 
-output = []
-for _, edge in enumerate(result):
+# 打印prim算法结果
+output = [] # 边信息输出
+min_weights_sum = 0 # 权值的最小和
+for _, edge in enumerate(res_edge_list):
     output.append(str(edge.n_from.value) + str(edge.n_to.value))
-print(output)
+    min_weights_sum += edge.weight
+print("Kruskal算法选出的边：\n", output)
+print("最小和=", min_weights_sum)
 
-# 输出：['AD', 'CE', 'DF', 'AB', 'BE', 'EG']
+# 输出
+# Kruskal算法选出的边：
+#  ['AD', 'CE', 'DF', 'AB', 'BE', 'EG']
+# 最小和= 39
